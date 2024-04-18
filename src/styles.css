@@ -1,1 +1,640 @@
 /* You can add global styles to this file, and also import other style files */
+/* ******************** Fonts ******************** */
+
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./assets/fonts/raleway-400.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Raleway Black";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(./assets/fonts/raleway-900.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./assets/fonts/roboto-mono-400.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* ******************** Fluid Design ******************** */
+
+/* @link https://utopia.fyi/type/calculator?c=320,17,1.125,1920,20,1.333,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+:root {
+  --step--2: clamp(0.7rem, calc(0.87rem + -0.14vw), 0.84rem);
+  --step--1: clamp(0.94rem, calc(0.95rem + -0.01vw), 0.94rem);
+  --step-0: clamp(1.06rem, calc(1.03rem + 0.19vw), 1.25rem);
+  --step-1: clamp(1.2rem, calc(1.1rem + 0.47vw), 1.67rem);
+  --step-2: clamp(1.35rem, calc(1.17rem + 0.88vw), 2.22rem);
+  --step-3: clamp(1.51rem, calc(1.22rem + 1.45vw), 2.96rem);
+  --step-4: clamp(1.7rem, calc(1.25rem + 2.25vw), 3.95rem);
+  --step-5: clamp(1.91rem, calc(1.25rem + 3.35vw), 5.26rem);
+  --step-6: clamp(2.15rem, calc(1.18rem + 4.86vw), 7.01rem);
+}
+
+/* ******************** Custom Properties ******************** */
+
+:root {
+  /*
+    MediaQueries: tamanio de la fuente en pixels 16px
+      sm - 0px - 0em
+      md - 768px - 48em * 16px
+      lg - 992px - 62em * 16px
+      xl - 1200px - 75em * 16px
+  */
+  --container-sm: 48em;
+  --container-md: 62em;
+  --container-lg: 75em;
+
+  --main-top: 2rem;
+  --main-bottom: 2rem;
+
+  --font-primary: Avenir, system-ui, sans-serif;
+  --font-logo: "Raleway", sans-serif;
+  --font-logo-black: "Raleway Black", sans-serif;
+  --font-code: "Roboto Mono", Consolas;
+
+  --color-primary: #e7562e;
+  --color-secondary: #e7762e;
+  --color-svg-bg: #2b3a42;
+
+  --color-light-bg: #fcfcfc;
+  --color-light-bg-alt: #f7f7f7;
+  --color-light-bg-opacity: rgba(255, 255, 255, 0.85);
+  --color-light-text: #202225;
+  --color-light-link: #08c;
+  --color-light-contrast: #eee;
+
+  --color-dark-bg: #202225;
+  --color-dark-bg-alt: #202b38;
+  --color-dark-bg-opacity: rgba(0, 0, 0, 0.7);
+  --color-dark-text: #fcfcfc;
+  --color-dark-link: #73cffa;
+  --color-dark-contrast: #2f2f2f;
+
+  --gradient-primary: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  --gradient-link: linear-gradient(
+    45deg,
+    var(--color-dark-link),
+    var(--color-light-link)
+  );
+}
+
+/* ******************** User Prefers ******************** */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --color-bg: var(--color-dark-bg);
+    --color-bg-alt: var(--color-dark-bg-alt);
+    --color-bg-opacity: var(--color-dark-bg-opacity);
+    --color-text: var(--color-dark-text);
+    --color-link: var(--color-dark-link);
+    --color-contrast: var(--color-dark-contrast);
+  }
+}
+
+body.dark {
+  --color-bg: var(--color-dark-bg);
+  --color-bg-alt: var(--color-dark-bg-alt);
+  --color-bg-opacity: var(--color-dark-bg-opacity);
+  --color-text: var(--color-dark-text);
+  --color-link: var(--color-dark-link);
+  --color-contrast: var(--color-dark-contrast);
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    --color-bg: var(--color-light-bg);
+    --color-bg-alt: var(--color-light-bg-alt);
+    --color-bg-opacity: var(--color-light-bg-opacity);
+    --color-text: var(--color-light-text);
+    --color-link: var(--color-light-link);
+    --color-contrast: var(--color-light-contrast);
+  }
+}
+
+body.light {
+  --color-bg: var(--color-light-bg);
+  --color-bg-opacity: var(--color-light-bg-opacity);
+  --color-bg-alt: var(--color-light-bg-alt);
+  --color-text: var(--color-light-text);
+  --color-link: var(--color-light-link);
+  --color-contrast: var(--color-light-contrast);
+}
+
+/* ******************** Reset CSS ******************** */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  font-family: var(--font-primary);
+  font-size: clamp(1rem, calc(1rem + 0.5vw), 1.25rem);
+  line-height: calc(1em + 0.5rem);
+  line-height: 1.5;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-link);
+  transition: all 0.3s ease-out;
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+blockquote {
+  padding: 0.5rem 1.5rem;
+  border-left: medium solid var(--color-primary);
+  opacity: 0.75;
+  background-color: var(--color-contrast);
+}
+
+blockquote p,
+figure {
+  margin: 0;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  border-radius: 0.5rem;
+  margin-bottom: var(--step-2);
+  font-family: var(--font-code);
+  font-size: var(--step--1);
+}
+
+hr {
+  border: thin solid var(--color-contrast);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* https://codepen.io/TechnoBishop/pen/LEVPJw */
+iframe,
+video {
+  width: 100%;
+  height: calc((100vw - 4rem) * (9 / 16));
+  max-height: calc(800px * 9 / 16);
+  aspect-ratio: 16 / 9;
+}
+
+label {
+  cursor: pointer;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: var(--step-3);
+  margin-bottom: var(--step-3);
+  font-weight: 900;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+}
+
+h4 {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+h5 {
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+}
+
+h6,
+small {
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+}
+
+p,
+ul,
+blockquote,
+table {
+  margin-top: 0;
+  margin-bottom: var(--step-2);
+}
+
+p {
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+  hyphens: auto;
+}
+
+ul ul {
+  margin-bottom: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr:nth-of-type(odd) {
+  background-color: var(--color-contrast);
+}
+
+th {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+td,
+th {
+  padding: 0.25rem;
+  border: thin solid var(--color-text);
+  text-align: left;
+}
+
+/* ******************** Animate Details ******************** */
+
+@keyframes accordion-open {
+  from {
+    max-height: var(--accordion-min-height);
+  }
+  to {
+    max-height: var(--accordion-max-height);
+  }
+}
+
+@keyframes accordion-close {
+  from {
+    min-height: var(--accordion-max-height);
+  }
+  to {
+    min-height: var(--accordion-min-height);
+  }
+}
+
+details {
+  --accordion-min-height: calc(var(--step-0) + var(--step-1) + var(--step-0));
+  --accordion-max-height: 300px;
+  border-bottom: thin solid var(--color-text);
+  overflow: hidden;
+  background-color: var(--color-border);
+  animation: accordion-close 0.4s ease-in-out;
+  transform-origin: top;
+  transition: all 0.3s ease;
+}
+
+details[open] {
+  animation: accordion-open 0.3s ease-in-out;
+  transform-origin: top;
+}
+
+summary {
+  position: relative;
+  padding: var(--step-0);
+  padding-left: var(--step-3);
+  display: block;
+  font-size: var(--step-1);
+  cursor: pointer;
+  background-color: var(--color-bg-alt);
+  transition: all 0.3s ease;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::before {
+  content: "▶";
+  position: absolute;
+  top: 1rem;
+  left: 0.5rem;
+  transform: rotate(0);
+  transform-origin: center;
+  transition: 0.2s transform ease;
+}
+
+details[open] > summary::before {
+  transform: rotate(90deg);
+  transition: 0.45s transform ease;
+}
+
+details[open] summary,
+summary:hover {
+  color: var(--color-text);
+  background-color: var(--color-bg-opacity);
+}
+
+details > *:not(summary) {
+  padding: var(--step-0);
+  background-color: var(--color-contrast);
+}
+
+summary > * {
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 48em) {
+  [id] {
+    scroll-margin-top: 4rem;
+  }
+}
+
+/* ******************** Animations ******************** */
+
+@keyframes bounce {
+  40% {
+    transform: scale(1.4);
+  }
+
+  60% {
+    transform: scale(0.8);
+  }
+
+  80% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bounce {
+  animation: bounce 0.4s linear;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 1.5s linear infinite;
+}
+
+/* ******************** Utilities ******************** */
+
+.btn,
+.post-content a[href^="https://www.youtube.com/watch"],
+.post-content a[href^="https://www.youtube.com/playlist"]
+{
+  border-radius: calc(var(--step-0) / 4);
+  margin-left: auto;
+  margin-bottom: var(--step-5);
+  padding: calc(var(--step-0) / 3);
+  display: block;
+  width: 192px;
+  font-family: var(--font-logo-black);
+  font-size: calc(var(--step-1) / 1.25);
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: var(--color-link);
+  color: var(--color-bg);
+}
+
+.btn {
+  margin-right: auto;
+}
+
+.btn:hover,
+.post-content a[href^="https://www.youtube.com/watch"]:hover,
+.post-content a[href^="https://www.youtube.com/playlist"]:hover
+{
+  color: var(--color-bg);
+  animation: pulse 1.5s linear infinite;
+}
+
+.btn-responsive {
+  width: auto;
+  min-width: 192px;
+  max-width: 576px;
+}
+
+.btn-awesome,
+.btn-awesome:hover {
+  transition: all 0.3s ease-out;
+  transform: scale(2);
+}
+
+.container-lg,
+.container-md,
+.container-sm {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--step-1);
+  padding-left: var(--step-1);
+  width: var(--container-sm);
+  max-width: 95%;
+}
+
+.container-md {
+  width: var(--container-md);
+}
+
+.container-lg {
+  width: var(--container-lg);
+}
+
+.scroll-x-container {
+  margin: var(--step--2) auto;
+  padding: var(--step-2);
+  max-width: 100%;
+  display: flex;
+  gap: var(--step-2);
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  background-color: var(--color-contrast);
+}
+
+.scroll-x-container::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.scroll-x-container::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+}
+
+.font-logo {
+  font-family: var(--font-logo);
+}
+
+.font-logo-black {
+  font-family: var(--font-logo-black);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.bg-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.bg-secondary {
+  color: var(--color-secondary);
+}
+
+.text-gradient-primary {
+  background-image: var(--gradient-primary);
+  -ms-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -ms-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 8rem;
+  height: 8rem;
+}
+
+.thumbnail {
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+}
+
+.title-border::after {
+  content: "";
+  margin-top: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 4rem;
+  height: 0.125rem;
+  display: block;
+  background-color: var(--color-secondary);
+}
+
+.border-radius-1 {
+  border-radius: 1rem;
+}
+
+.hero-image {
+  /* --bg-hero: url("../img/apoyo.jpg"); */
+  position: relative;
+  z-index: 998;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: var(--bg-hero);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.hero-image > div {
+  width: inherit;
+  min-height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: var(--font-logo);
+  background-color: var(--color-bg-opacity);
+  color: var(--color-text);
+}
+
+main > .hero-image:first-child {
+  margin-top: calc(-1 * var(--main-top));
+}
