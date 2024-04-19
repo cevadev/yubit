@@ -638,3 +638,4 @@ summary > * {
 main > .hero-image:first-child {
   margin-top: calc(-1 * var(--main-top));
 }
+

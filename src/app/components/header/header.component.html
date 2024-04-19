@@ -1,1 +1,9 @@
-<p>header works!</p>
+<header class="header">
+  <div class="header-container">
+    <a class="logo" href="/">
+      <img [src]="logoPath" alt="Yubit-logo">
+      <h2 class="alias title-border">{{ logoText }}</h2>
+    </a>
+    <app-search-input></app-search-input>
+  </div>
+</header>
