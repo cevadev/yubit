@@ -7,5 +7,16 @@ import { Component } from '@angular/core';
 })
 export class SearchInputComponent {
   public dropDownIcon: string = '../../../assets/img/dropdown_icon.png';
+  public categoryIcon: string = '../../../assets/img/dropdown_icon.png';
   public searchIcon: string = '../../../assets/img/search_icon.png';
+
+  public search() {
+    console.info("I am searching for");
+  }
+
+  // leemos el evento keyup del elemento input
+  public getInput(event: Event) {
+    const e = event.target as HTMLInputElement;
+    console.info(e.value);
+  }
 }

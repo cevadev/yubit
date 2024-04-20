@@ -1,4 +1,4 @@
 <form action="" method="POST" class="form-search" target="_blank">
-    <input type="text" class="input-search" name="search" placeholder="Buscar en Yubit">
-    <img [src]="searchIcon" class="boton-search" alt="" srcset="">
+  <input type="text" (keyup)="getInput($event)" class="input-search" name="search" placeholder="Buscar en Yubit">
+  <img [src]="searchIcon" class="boton-search" alt="" srcset="" (click)="search()" >
 </form>

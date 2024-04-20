@@ -13,5 +13,5 @@ export class HeaderLinksComponent {
 
   public bestSeller: string = 'Más vendidos';
   public fullStar: string = '5 estrellas';
-  public categories: string = 'Categorías';
+  public categories: string = 'Ofertas del día';
 }
